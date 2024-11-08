@@ -1,0 +1,9 @@
+<div *ngIf="control; else loading">
+    <label>
+        <input type="checkbox" [formControl]="control" /> {{ field.label }}
+    </label>
+</div>
+
+<ng-template #loading>
+    <p class="text-center">Loading...</p>
+</ng-template>

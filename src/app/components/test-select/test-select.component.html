@@ -1,0 +1,10 @@
+<div *ngIf="control; else loading">
+    <label>{{ field.label }} <span *ngIf="field.required">*</span></label>
+    <select [formControl]="control">
+        <option *ngFor="let choice of field.choices" [value]="choice">{{ choice }}</option>
+    </select>
+</div>
+
+<ng-template #loading>
+    <p class="text-center">Loading...</p>
+</ng-template>
