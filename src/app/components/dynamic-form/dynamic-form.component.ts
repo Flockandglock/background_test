@@ -47,23 +47,15 @@ export class DynamicFormComponent implements OnInit {
             "key": "ageGroup"
         },
         {
-            "type": "input",
-            "label": "ячс",
-            "description": "Enter your full name",
-            "required": true,
-            "key": "name"
-        },
-        {
-            "type": "select",
-            "label": "Age Group",
-            "choices": ["Under 18", "18-35", "36-50", "51+"],
-            "key": "ageGroup"
-        },
-        {
             "type": "number",
             "label": "Years of Experience",
             "description": "Enter your years of experience",
             "key": "experience"
+        },
+        {
+            "type": "checkbox",
+            "label": "Subscribe to newsletter",
+            "key": "newsletter"
         },
         {
             "type": "checkbox",
