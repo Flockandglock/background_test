@@ -1,0 +1,11 @@
+{
+    "form": [
+        {
+            "type": "input",
+            "label": "Name",
+            "description": "Enter your full name",
+            "required": true,
+            "key": "name"
+        }
+    ]
+}

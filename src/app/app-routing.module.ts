@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+
+import { AddFormPageComponent } from './pages/add-form-page/add-form-page.component';
 
 
 const routes: Routes = [
   {
-    path: '', component: AppComponent
+    path: 'add-form', 
+    component: AddFormPageComponent
   },
 ];
 

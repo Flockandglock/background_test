@@ -1,1 +1,32 @@
-<p>add-form-page works!</p>
+<div class="form-control">
+  <label for="type">Выберите тип компонента</label>
+  <select id="type" [(ngModel)]="typeComponent">
+    @for (type of arrTypesComponent; track $index) {
+    <option [value]="type.value">{{ type.name }}</option>
+    }
+  </select>
+</div>
+
+
+  <div class="form-control">
+    <label for="label_type_input">Название поля</label>
+    <input
+      type="text"
+      id="label_type_input"
+      placeholder="Введите название поля"
+      [(ngModel)]="labelInputTypeComponent"
+    />
+  </div>
+  <div class="form-control">
+    <label for="type input">Выберите тип "Поле ввода"</label>
+    <select id="type input" [(ngModel)]="typeInputComponent">
+      @for (item of arrTypesInputComponent; track $index) {
+        <option [value]="item.value">{{item.name}}</option>
+      }
+    </select>
+  </div>
+
+
+<button (click)="addFieldForm()" class="btn btn-dark">Добавить элемент</button>
+<button (click)="submit()" class="btn btn-dark">Отправить форму</button>
+

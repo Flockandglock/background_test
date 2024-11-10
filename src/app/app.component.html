@@ -1,2 +1,15 @@
-<h1>qwe</h1>
-<app-dynamic-form></app-dynamic-form>
+<nav class="navbar bg-dark">
+    <h2>Генератор форм</h2>
+
+    <ul>
+        <li  routerLinkActive="router-link-active" >
+            <a href="">Готовая форма</a>
+        </li>
+        <li  routerLinkActive="router-link-active" >
+            <a [routerLink]="['/add-form']">Создать форму</a>
+        </li>
+    </ul>
+</nav>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

@@ -13,6 +13,8 @@ import { TestInputComponent } from './components/test-input/test-input.component
 import { TestCheckboxComponent } from './components/test-checkbox/test-checkbox.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { CommonModule } from '@angular/common';
+import { AddFormPageComponent } from './pages/add-form-page/add-form-page.component';
+import { FinalFormComponent } from './pages/final-form/final-form.component';
 
 
 
@@ -23,7 +25,9 @@ import { CommonModule } from '@angular/common';
     TestNumberComponent,
     TestInputComponent,
     TestCheckboxComponent,
-    DynamicFormComponent
+    DynamicFormComponent,
+    AddFormPageComponent,
+    FinalFormComponent
   ],
   imports: [
     CommonModule,
