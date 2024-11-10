@@ -39,31 +39,41 @@ export class AddFormPageComponent {
     }
   ];
 
-
-
-  public typeComponent: string = this.arrTypesComponent[0].value;
-  public labelInputTypeComponent: string = '';
-  public typeInputComponent: string = this.arrTypesInputComponent[0].value;
-  public typeRequareComponent: boolean = false;
-
   public fieldForm?: IFieldForm;
+  public arrayFiledsForm: Array<IFieldForm> = [];
 
 constructor(
   private serviceForm: FormServiceService
 ) {}
 
-  public addFieldForm () {
-    const field = {
-      type: this.typeComponent,
-      required: this.typeRequareComponent,
-      label: this.labelInputTypeComponent,
-      typeComponent: this.typeInputComponent,
-      key: String(new Date())
-    };
-    this.fieldForm = {
-      ...field
-    };
-    console.log(this.fieldForm)
+  public addFieldForm (key: string) {
+    const field = this.arrayFiledsForm.find((item) => {
+      item.key === key
+    });
+    if (field) {
+      this.arrayFiledsForm.push(field)
+    }
+    console.log(this.arrayFiledsForm)
+  }
+
+  public removeFieldForm (key: string) {
+    
+    if (this.arrayFiledsForm) {
+      const newArr = this.arrayFiledsForm.filter(item => item.key !== key);
+      this.arrayFiledsForm = newArr;
+    }
+    
+    return this.arrayFiledsForm;
+  }
+
+  public createField () {
+    this.arrayFiledsForm.push({
+      type: this.arrTypesComponent[0].value,
+      required: false,
+      label: '',
+      typeComponent: '',
+      key: String(new Date().getTime())
+    })
   }
 
   public submit () {

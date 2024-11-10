@@ -7,6 +7,22 @@
       "required": true,
       "key": "name",
       "id": "56fc"
+    },
+    {
+      "id": "673a",
+      "type": "input",
+      "required": false,
+      "label": "asdasd",
+      "typeComponent": "common input",
+      "key": "Sun Nov 10 2024 18:28:32 GMT+0400 (Самарское стандартное время)"
+    },
+    {
+      "id": "f7e6",
+      "type": "input",
+      "required": true,
+      "label": "xcxcx",
+      "typeComponent": "common input",
+      "key": "Sun Nov 10 2024 18:28:41 GMT+0400 (Самарское стандартное время)"
     }
   ]
 }
