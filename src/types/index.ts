@@ -12,5 +12,6 @@ export interface IFieldForm {
   type: string,
   label: string,
   typeComponent: string
-  key: string
+  key: string,
+  required: boolean
 }

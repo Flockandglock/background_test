@@ -37,12 +37,14 @@ export class AddFormPageComponent {
       value: 'multi input',
       name: 'Поле воода с возможностью добавлять доп. поля ввода'
     }
-  ]
+  ];
+
 
 
   public typeComponent: string = this.arrTypesComponent[0].value;
   public labelInputTypeComponent: string = '';
   public typeInputComponent: string = this.arrTypesInputComponent[0].value;
+  public typeRequareComponent: boolean = false;
 
   public fieldForm?: IFieldForm;
 
@@ -53,6 +55,7 @@ constructor(
   public addFieldForm () {
     const field = {
       type: this.typeComponent,
+      required: this.typeRequareComponent,
       label: this.labelInputTypeComponent,
       typeComponent: this.typeInputComponent,
       key: String(new Date())
