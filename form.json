@@ -1,11 +1,26 @@
 {
-    "form": [
-        {
-            "type": "input",
-            "label": "Name",
-            "description": "Enter your full name",
-            "required": true,
-            "key": "name"
-        }
-    ]
+  "form": [
+    {
+      "type": "input",
+      "label": "Name",
+      "description": "Enter your full name",
+      "required": true,
+      "key": "name",
+      "id": "56fc"
+    },
+    {
+      "id": "921f",
+      "type": "input",
+      "label": "asdasd",
+      "typeComponent": "common input",
+      "key": "Sun Nov 10 2024 17:41:41 GMT+0400 (Самарское стандартное время)"
+    },
+    {
+      "id": "c6c0",
+      "type": "input",
+      "label": "xxxxxxxxxxx",
+      "typeComponent": "multi input",
+      "key": "Sun Nov 10 2024 17:44:29 GMT+0400 (Самарское стандартное время)"
+    }
+  ]
 }

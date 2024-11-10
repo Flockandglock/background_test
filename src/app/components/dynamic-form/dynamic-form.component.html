@@ -1,9 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <ng-container *ngFor="let field of fields">
         <ng-container [ngSwitch]="field.type">
-            <div>
-                <app-test-input *ngSwitchCase="'input'" [field]="field" [control]="getControl(field.key)"></app-test-input>
-            </div>
+            <app-test-input *ngSwitchCase="'input'" [field]="field" [control]="getControl(field.key)"></app-test-input>
             <app-test-select *ngSwitchCase="'select'" [field]="field" [control]="getControl(field.key)"></app-test-select>
             <app-test-number *ngSwitchCase="'number'" [field]="field" [control]="getControl(field.key)"></app-test-number>
             <app-test-checkbox *ngSwitchCase="'checkbox'" [field]="field" [control]="getControl(field.key)"></app-test-checkbox>

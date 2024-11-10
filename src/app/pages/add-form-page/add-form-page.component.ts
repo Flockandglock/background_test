@@ -44,7 +44,7 @@ export class AddFormPageComponent {
   public labelInputTypeComponent: string = '';
   public typeInputComponent: string = this.arrTypesInputComponent[0].value;
 
-  public arrayFieldsForm: Array<IFieldForm> = [];
+  public fieldForm?: IFieldForm;
 
 constructor(
   private serviceForm: FormServiceService
@@ -57,12 +57,23 @@ constructor(
       typeComponent: this.typeInputComponent,
       key: String(new Date())
     };
-    this.arrayFieldsForm.push(field);
-    console.log(this.arrayFieldsForm)
+    this.fieldForm = {
+      ...field
+    };
+    console.log(this.fieldForm)
   }
 
   public submit () {
-    this.serviceForm.createForm(this.arrayFieldsForm);
-    console.log('submit is done', this.arrayFieldsForm);
+    if (this.fieldForm) {
+      console.log(this.fieldForm)
+      this.serviceForm.createForm(this.fieldForm).subscribe({
+        next: (response) => {
+          console.log('Данные успешно отправлены:', response);
+        },
+        error: (err) => {
+          console.error('Ошибка при отправке данных:', err);
+        }
+      });
+    }
   }
 }
