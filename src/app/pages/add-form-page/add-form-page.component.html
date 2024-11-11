@@ -1,3 +1,4 @@
+<h2>Добавьте компонент для формы</h2>
 <form [formGroup]="fieldForm" (ngSubmit)="submit()">
   <div class="wrapper">
     <div class="form-control">
@@ -8,8 +9,8 @@
         }
       </select>
     </div>
-    
-    
+    <!-- Если был выбран "поле ввода" -->
+    @if (fieldForm.value.type && fieldForm.value.type === 'input') {
       <div class="form-control">
         <label for="label">Название поля</label>
         <input
@@ -27,6 +28,28 @@
           }
         </select>
       </div>
+    }
+    <!-- Если был выбран селект -->
+    @if (fieldForm.value.type && fieldForm.value.type === 'select') {
+      <div class="form-control">
+        <label for="label">Введите название поля</label>
+        <input
+          type="text"
+          id="label"
+          placeholder="Введите название поля"
+          formControlName="label"
+        />
+      </div>
+      <div class="form-control">
+        <label for="label">Введите название селекта</label>
+        <input
+          type="text"
+          id="label"
+          placeholder="Введите название селекта"
+          formControlName="label"
+        />
+      </div>
+    }
       <div class="form-control">
         <label for="required">Обязательно для заполнения?</label>
         <input class="checkbox" type="checkbox" id="required" formControlName="required">
