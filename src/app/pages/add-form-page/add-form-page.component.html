@@ -1,46 +1,37 @@
-@if (arrayFiledsForm.length !== 0) {
-  @for (item of arrayFiledsForm; track $index) {
-    <div class="wrapper">
+<form [formGroup]="fieldForm" (ngSubmit)="submit()">
+  <div class="wrapper">
+    <div class="form-control">
+      <label for="type">Выберите тип компонента</label>
+      <select id="type" formControlName="type">
+        @for (type of arrTypesComponent; track $index) {
+        <option [value]="type.value">{{ type.name }}</option>
+        }
+      </select>
+    </div>
+    
+    
       <div class="form-control">
-        <label for="type">Выберите тип компонента</label>
-        <select id="type" [(ngModel)]="item.typeComponent">
-          @for (type of arrTypesComponent; track $index) {
-          <option [value]="type.value">{{ type.name }}</option>
+        <label for="label">Название поля</label>
+        <input
+          type="text"
+          id="label"
+          placeholder="Введите название поля"
+          formControlName="label"
+        />
+      </div>
+      <div class="form-control">
+        <label for="varietyComponent">Выберите тип "Поле ввода"</label>
+        <select id="varietyComponent" formControlName="varietyComponent">
+          @for (item of arrTypesInputComponent; track $index) {
+            <option [value]="item.value">{{item.name}}</option>
           }
         </select>
       </div>
-      
-      
-        <div class="form-control">
-          <label for="label_type_input">Название поля</label>
-          <input
-            type="text"
-            id="label_type_input"
-            placeholder="Введите название поля"
-            [(ngModel)]="item.label"
-          />
-        </div>
-        <div class="form-control">
-          <label for="type input">Выберите тип "Поле ввода"</label>
-          <select id="type input" [(ngModel)]="item.typeComponent">
-            @for (item of arrTypesInputComponent; track $index) {
-              <option [value]="item.value">{{item.name}}</option>
-            }
-          </select>
-        </div>
-        <div class="form-control">
-          <label for="">Обязательно для заполнения?</label>
-          <input class="checkbox" type="checkbox" [(ngModel)]="item.required">
-        </div>
-        <button (click)="addFieldForm(item.key)" class="btn btn-dark">Добавить поле</button>
-        <button (click)="removeFieldForm(item.key)" class="btn btn-dark">Удалить поле</button>
-    </div>
-  }
-} @else {
-  <h2>Добавьте элемент</h2>
-}
-
-
-<button (click)="createField()" class="btn btn-dark">Добавить элемент</button>
-<button (click)="submit()" class="btn btn-dark">Отправить форму</button>
+      <div class="form-control">
+        <label for="required">Обязательно для заполнения?</label>
+        <input class="checkbox" type="checkbox" id="required" formControlName="required">
+      </div>
+      <button type="submit" class="btn btn-dark" [disabled]="fieldForm.invalid || submitted">Добавить поле</button>
+  </div>
+</form>
 

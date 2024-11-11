@@ -10,12 +10,12 @@ export class FormServiceService {
 
   constructor(private http: HttpClient) { }
 
-  createForm(form: IFieldForm) {
-    return this.http.post(`http://localhost:3000/form`, form)
+  createForm(field: IFieldForm) {
+    return this.http.post(`http://localhost:3000/field`, field)
       
   }
 
-  getForm(): Observable<Array<IFieldForm>> {
-    return this.http.get<Array<IFieldForm>>(`http://localhost:3000/form`)
+  getFileds(): Observable<Array<IFieldForm>> {
+    return this.http.get<Array<IFieldForm>>(`http://localhost:3000/field`)
   }
 }

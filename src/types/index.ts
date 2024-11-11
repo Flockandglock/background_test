@@ -11,7 +11,7 @@ export interface ITypesInputComponents {
 export interface IFieldForm {
   type: string,
   label: string,
-  typeComponent: string
-  key: string,
+  varietyComponent: string
+  id: string,
   required: boolean
 }

@@ -21,17 +21,18 @@ export class FinalFormComponent implements OnInit {
   ngOnInit(): void {
     
     this.form = this.fb.group({});
-    this.serviceForm.getForm().subscribe(form => {
+    this.serviceForm.getFileds().subscribe(form => {
       this.formField = form;
+      console.log(form)
     });
     this.formField?.forEach(field => {
-      this.form.addControl(field.key, new FormControl(''));
+      this.form.addControl(field.id, new FormControl(''));
       
     });
   }
 
-  getControl(key: string): FormControl {
-    const control = this.form.get(key);
+  getControl(id: string): FormControl {
+    const control = this.form.get(id);
     if (control instanceof FormControl) {
         return control; // Return the control if it's a FormControl
     }

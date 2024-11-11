@@ -1,5 +1,5 @@
 {
-  "form": [
+  "field": [
     {
       "type": "input",
       "label": "Name",
@@ -23,6 +23,30 @@
       "label": "xcxcx",
       "typeComponent": "common input",
       "key": "Sun Nov 10 2024 18:28:41 GMT+0400 (Самарское стандартное время)"
+    },
+    {
+      "id": "56fc",
+      "type": "input",
+      "label": "Name",
+      "description": "Enter your full name",
+      "required": true,
+      "key": "name"
+    },
+    {
+      "id": "56fc",
+      "type": "input",
+      "label": "rrrrrrrrrrrrrrrr",
+      "description": "Enter your full name",
+      "required": false,
+      "key": "name",
+      "typeComponent": "multi input"
+    },
+    {
+      "id": "1731337915504",
+      "type": "input",
+      "required": true,
+      "label": "ssssssssssssssss",
+      "varietyComponent": "common input"
     }
   ]
 }

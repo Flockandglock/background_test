@@ -1,92 +1,87 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { IFieldForm, ITypesComponents, ITypesInputComponents } from '../../../types';
+import {
+  IFieldForm,
+  ITypesComponents,
+  ITypesInputComponents,
+} from '../../../types';
 import { FormServiceService } from '../../service/form-service.service';
+import { Observable } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-form-page',
   templateUrl: './add-form-page.component.html',
-  styleUrl: './add-form-page.component.scss'
+  styleUrl: './add-form-page.component.scss',
 })
 export class AddFormPageComponent {
   public arrTypesComponent: Array<ITypesComponents> = [
     {
       value: 'input',
-      name: 'Поле ввода'
+      name: 'Поле ввода',
     },
     {
       value: 'select',
-      name: 'Селект'
+      name: 'Селект',
     },
     {
       value: 'checkbox',
-      name: 'Чекбокс'
+      name: 'Чекбокс',
     },
     {
       value: 'number',
-      name: 'Число'
-    }
+      name: 'Число',
+    },
   ];
-  
+
   public arrTypesInputComponent: Array<ITypesInputComponents> = [
     {
       value: 'common input',
-      name: 'Поле ввода'
+      name: 'Поле ввода',
     },
     {
       value: 'multi input',
-      name: 'Поле воода с возможностью добавлять доп. поля ввода'
-    }
+      name: 'Поле воода с возможностью добавлять доп. поля ввода',
+    },
   ];
 
-  public fieldForm?: IFieldForm;
-  public arrayFiledsForm: Array<IFieldForm> = [];
+  public fieldForm = new FormGroup({
+    type: new FormControl(null, [Validators.required]),
+    required: new FormControl(null, [Validators.required]),
+    label: new FormControl(null, [Validators.required]),
+    varietyComponent:new FormControl(null, [Validators.required]),
+  });
+  public submitted: boolean = false;
 
-constructor(
-  private serviceForm: FormServiceService
-) {}
+  constructor(private serviceForm: FormServiceService) {}
 
-  public addFieldForm (key: string) {
-    const field = this.arrayFiledsForm.find((item) => {
-      item.key === key
-    });
-    if (field) {
-      this.arrayFiledsForm.push(field)
+  public submit() {
+    if (this.fieldForm.invalid) {
+      return
     }
-    console.log(this.arrayFiledsForm)
-  }
 
-  public removeFieldForm (key: string) {
-    
-    if (this.arrayFiledsForm) {
-      const newArr = this.arrayFiledsForm.filter(item => item.key !== key);
-      this.arrayFiledsForm = newArr;
-    }
-    
-    return this.arrayFiledsForm;
-  }
+    this.submitted = true
 
-  public createField () {
-    this.arrayFiledsForm.push({
-      type: this.arrTypesComponent[0].value,
-      required: false,
-      label: '',
-      typeComponent: '',
-      key: String(new Date().getTime())
+    const field = {
+      type: this.fieldForm.value.type ? this.fieldForm.value.type : '',
+      required: this.fieldForm.value.required ? this.fieldForm.value.required : false,
+      label: this.fieldForm.value.label ? this.fieldForm.value.label : '',
+      varietyComponent: this.fieldForm.value.varietyComponent ? this.fieldForm.value.varietyComponent : '',
+      id: String(new Date().getTime())
+    };
+
+    this.serviceForm.createForm(field).subscribe({
+      next: (response) => {
+        this.fieldForm.reset();
+        this.submitted = false;
+        console.log('Данные успешно отправлены:', response);
+      },
+      error: (err) => {
+        console.error('Ошибка при отправке данных:', err);
+      }
+      
+      
     })
   }
 
-  public submit () {
-    if (this.fieldForm) {
-      console.log(this.fieldForm)
-      this.serviceForm.createForm(this.fieldForm).subscribe({
-        next: (response) => {
-          console.log('Данные успешно отправлены:', response);
-        },
-        error: (err) => {
-          console.error('Ошибка при отправке данных:', err);
-        }
-      });
-    }
-  }
 }
