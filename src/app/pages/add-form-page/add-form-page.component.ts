@@ -45,43 +45,64 @@ export class AddFormPageComponent {
     },
   ];
 
+
   public fieldForm = new FormGroup({
     type: new FormControl(null, [Validators.required]),
-    required: new FormControl(null, [Validators.required]),
+    required: new FormControl(null),
     label: new FormControl(null, [Validators.required]),
-    varietyComponent:new FormControl(null, [Validators.required]),
+    optionForSelect: new FormControl(null),
+    varietyComponent:new FormControl(null),
   });
   public submitted: boolean = false;
 
   constructor(private serviceForm: FormServiceService) {}
+
+  public createObjFromSubmit (typeField: string): IFieldForm | null {
+    switch (typeField) {
+      case 'input':
+        return {
+          type: this.fieldForm.value.type ? this.fieldForm.value.type : '',
+          required: this.fieldForm.value.required ? this.fieldForm.value.required : false,
+          label: this.fieldForm.value.label ? this.fieldForm.value.label : '',
+          varietyComponent: this.fieldForm.value.varietyComponent ? this.fieldForm.value.varietyComponent : '',
+          id: String(new Date().getTime())
+        }
+      case 'select':
+        const stringToArr = (string: string) => {
+          return string.split(', ').map(str => str.trim());
+        }
+
+        return {
+          type: this.fieldForm.value.type ? this.fieldForm.value.type : '',
+          required: this.fieldForm.value.required ? this.fieldForm.value.required : false,
+          label: this.fieldForm.value.label ? this.fieldForm.value.label : '',
+          optionForSelect: this.fieldForm.value.optionForSelect ? stringToArr(this.fieldForm.value.optionForSelect) : [],
+          id: String(new Date().getTime())
+        }
+      default:
+        return null
+    }
+  }
 
   public submit() {
     if (this.fieldForm.invalid) {
       return
     }
 
-    this.submitted = true
+    const field = this.fieldForm.value.type ? this.createObjFromSubmit(this.fieldForm.value.type) : null;
 
-    const field = {
-      type: this.fieldForm.value.type ? this.fieldForm.value.type : '',
-      required: this.fieldForm.value.required ? this.fieldForm.value.required : false,
-      label: this.fieldForm.value.label ? this.fieldForm.value.label : '',
-      varietyComponent: this.fieldForm.value.varietyComponent ? this.fieldForm.value.varietyComponent : '',
-      id: String(new Date().getTime())
-    };
-
-    this.serviceForm.createForm(field).subscribe({
-      next: (response) => {
-        this.fieldForm.reset();
-        this.submitted = false;
-        console.log('Данные успешно отправлены:', response);
-      },
-      error: (err) => {
-        console.error('Ошибка при отправке данных:', err);
-      }
-      
-      
-    })
+    if (field) {
+      this.serviceForm.createForm(field).subscribe({
+        next: (response) => {
+          this.fieldForm.reset();
+          this.submitted = true;
+          console.log('Данные успешно отправлены:', response);
+        },
+        error: (err) => {
+          console.error('Ошибка при отправке данных:', err);
+        }
+      });
+    }
   }
 
 }

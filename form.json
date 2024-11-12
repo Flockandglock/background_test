@@ -47,6 +47,17 @@
       "required": true,
       "label": "ssssssssssssssss",
       "varietyComponent": "common input"
+    },
+    {
+      "id": "1731416802302",
+      "type": "select",
+      "required": false,
+      "label": "йцу",
+      "optionForSelect": [
+        "фыв",
+        "ячс",
+        "йцу"
+      ]
     }
   ]
 }

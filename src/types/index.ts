@@ -8,10 +8,12 @@ export interface ITypesInputComponents {
   name: string
 }
 
+
 export interface IFieldForm {
   type: string,
   label: string,
-  varietyComponent: string
+  varietyComponent?: string
   id: string,
-  required: boolean
+  required: boolean,
+  optionForSelect?: Array<string>
 }

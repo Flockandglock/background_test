@@ -1,7 +1,7 @@
 <div *ngIf="control; else loading">
     <label>{{ field.label }} <span *ngIf="field.required">*</span></label>
     <select [formControl]="control">
-        <option *ngFor="let choice of field.choices" [value]="choice">{{ choice }}</option>
+        <option *ngFor="let choice of field.optionForSelect" [value]="choice">{{ choice }}</option>
     </select>
 </div>
 
