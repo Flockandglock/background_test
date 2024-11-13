@@ -42,6 +42,5 @@ export class FinalFormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form.value);
-    // Handle form submission to server here
   }
 }

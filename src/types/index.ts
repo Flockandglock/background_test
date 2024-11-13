@@ -15,5 +15,5 @@ export interface IFieldForm {
   varietyComponent?: string
   id: string,
   required: boolean,
-  optionForSelect?: Array<string>
+  optionType?: Array<string>
 }

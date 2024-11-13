@@ -45,51 +45,59 @@ export class AddFormPageComponent {
     },
   ];
 
-
   public fieldForm = new FormGroup({
     type: new FormControl(null, [Validators.required]),
     required: new FormControl(null),
     label: new FormControl(null, [Validators.required]),
-    optionForSelect: new FormControl(null),
-    varietyComponent:new FormControl(null),
+    optionType: new FormControl(null),
+    varietyComponent: new FormControl(null),
   });
   public submitted: boolean = false;
 
   constructor(private serviceForm: FormServiceService) {}
 
-  public createObjFromSubmit (typeField: string): IFieldForm | null {
-    switch (typeField) {
-      case 'input':
-        return {
-          type: this.fieldForm.value.type ? this.fieldForm.value.type : '',
-          required: this.fieldForm.value.required ? this.fieldForm.value.required : false,
-          label: this.fieldForm.value.label ? this.fieldForm.value.label : '',
-          varietyComponent: this.fieldForm.value.varietyComponent ? this.fieldForm.value.varietyComponent : '',
-          id: String(new Date().getTime())
-        }
-      case 'select':
-        const stringToArr = (string: string) => {
-          return string.split(', ').map(str => str.trim());
-        }
+  public createObjFromSubmit(typeField: string): IFieldForm | null {
+    if (typeField === 'input' || typeField === 'number') {
+      return {
+        type: this.fieldForm.value.type ? this.fieldForm.value.type : '',
+        required: this.fieldForm.value.required
+          ? this.fieldForm.value.required
+          : false,
+        label: this.fieldForm.value.label ? this.fieldForm.value.label : '',
+        varietyComponent: this.fieldForm.value.varietyComponent
+          ? this.fieldForm.value.varietyComponent
+          : '',
+        id: String(new Date().getTime()),
+      };
+    } else if (typeField === 'select' || typeField === 'checkbox') {
+      const stringToArr = (string: string) => {
+        return string.split(', ').map((str) => str.trim());
+      };
 
-        return {
-          type: this.fieldForm.value.type ? this.fieldForm.value.type : '',
-          required: this.fieldForm.value.required ? this.fieldForm.value.required : false,
-          label: this.fieldForm.value.label ? this.fieldForm.value.label : '',
-          optionForSelect: this.fieldForm.value.optionForSelect ? stringToArr(this.fieldForm.value.optionForSelect) : [],
-          id: String(new Date().getTime())
-        }
-      default:
-        return null
+      return {
+        type: this.fieldForm.value.type ? this.fieldForm.value.type : '',
+        required: this.fieldForm.value.required
+          ? this.fieldForm.value.required
+          : false,
+        label: this.fieldForm.value.label ? this.fieldForm.value.label : '',
+        optionType: this.fieldForm.value.optionType
+          ? stringToArr(this.fieldForm.value.optionType)
+          : [],
+        id: String(new Date().getTime()),
+      };
+    } else {
+      return null;
     }
   }
 
   public submit() {
     if (this.fieldForm.invalid) {
-      return
+      return;
     }
 
-    const field = this.fieldForm.value.type ? this.createObjFromSubmit(this.fieldForm.value.type) : null;
+    const field = this.fieldForm.value.type
+      ? this.createObjFromSubmit(this.fieldForm.value.type)
+      : null;
 
     if (field) {
       this.serviceForm.createForm(field).subscribe({
@@ -100,9 +108,8 @@ export class AddFormPageComponent {
         },
         error: (err) => {
           console.error('Ошибка при отправке данных:', err);
-        }
+        },
       });
     }
   }
-
 }

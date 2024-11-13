@@ -19,11 +19,29 @@
       "type": "select",
       "required": true,
       "label": "ssssssssss",
-      "optionForSelect": [
+      "optionType": [
         "фыв",
         "ячс",
         "йцу"
       ]
+    },
+    {
+      "id": "1731523418896",
+      "type": "checkbox",
+      "required": true,
+      "label": "sssssssssssssccxc",
+      "optionType": [
+        "qwe",
+        "asd",
+        "zxc"
+      ]
+    },
+    {
+      "id": "1731523449208",
+      "type": "number",
+      "required": true,
+      "label": "vvvv",
+      "varietyComponent": ""
     }
   ]
 }
