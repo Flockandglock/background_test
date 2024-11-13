@@ -1,80 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-
-interface FormField {
-    type: string;
-    label: string;
-    description?: string;
-    required?: boolean;
-    key: string;
-    choices?: string[];
-}
-
+import { IFieldForm } from '../../../types';
+import { FormServiceService } from '../../service/form-service.service';
+import { Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
-  styleUrl: './dynamic-form.component.scss'
+  styleUrl: './dynamic-form.component.scss',
 })
 export class DynamicFormComponent implements OnInit {
   form!: FormGroup;
-  fields: FormField[] = []; // This will hold the JSON configuration
+  fields$?: Observable<Array<IFieldForm>>;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private serviceForm: FormServiceService
+  ) {}
 
   ngOnInit() {
-      // Simulate fetching JSON data from the server
-      this.fields = this.fetchFormConfig();
-      this.form = this.fb.group({});
-      this.fields.forEach(field => {
-          this.form.addControl(field.key, new FormControl(''));
-      });
+    this.form = this.fb.group({});
+    this.fields$ = this.serviceForm.getFileds().pipe(
+      tap((res) => {
+        res.forEach((item: IFieldForm) => {
+          this.form.addControl(item.type, new FormControl(''));
+        });
+      })
+    );
   }
 
-  fetchFormConfig() {
-      return [
-        {
-            "type": "input",
-            "label": "Name",
-            "description": "Enter your full name",
-            "required": true,
-            "key": "name"
-        },
-        {
-            "type": "select",
-            "label": "Age Group",
-            "choices": ["Under 18", "18-35", "36-50", "51+"],
-            "key": "ageGroup"
-        },
-        {
-            "type": "number",
-            "label": "Years of Experience",
-            "description": "Enter your years of experience",
-            "key": "experience"
-        },
-        {
-            "type": "checkbox",
-            "label": "Subscribe to newsletter",
-            "key": "newsletter"
-        },
-        {
-            "type": "checkbox",
-            "label": "Subscribe to newsletter",
-            "key": "newsletter"
-        }
-    ];
-  }
-
-  getControl(key: string): FormControl {
-    const control = this.form.get(key);
+  getControl(type: string): FormControl {
+    const control = this.form.get(type);
     if (control instanceof FormControl) {
-        return control; // Return the control if it's a FormControl
+      return control; 
     }
-    return new FormControl(''); // Return a new FormControl if not found
-}
+    return new FormControl(''); 
+  }
 
   onSubmit() {
-      console.log(this.form.value);
-      // Handle form submission to server here
+    console.log(this.form.value);
+    // Handle form submission to server here
   }
 }
