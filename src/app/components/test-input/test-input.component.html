@@ -1,6 +1,6 @@
 <div *ngIf="control; else loading">
     <label>{{ field.label }} <span *ngIf="field.required">*</span></label>
-    <input type="text" [formControl]="control" />
+    <input type="text" formControlName='Name' />
     <small *ngIf="field.description">{{ field.description }}</small>
 </div>
 
