@@ -13,7 +13,17 @@
       "required": false,
       "label": "asdasd",
       "typeComponent": "common input"
+    },
+    {
+      "id": "1731522186641",
+      "type": "select",
+      "required": true,
+      "label": "ssssssssss",
+      "optionForSelect": [
+        "фыв",
+        "ячс",
+        "йцу"
+      ]
     }
-    
   ]
 }

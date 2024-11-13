@@ -1,13 +1,14 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    
-    <ng-container *ngFor="let field of formField">
-        <ng-container [ngSwitch]="field.type">
-            <app-test-input *ngSwitchCase="'input'" [field]="field" [control]="getControl(field.id)"></app-test-input>
-            <app-test-select *ngSwitchCase="'select'" [field]="field" [control]="getControl(field.id)"></app-test-select>
-            <app-test-number *ngSwitchCase="'number'" [field]="field" [control]="getControl(field.id)"></app-test-number>
-            <app-test-checkbox *ngSwitchCase="'checkbox'" [field]="field" [control]="getControl(field.id)"></app-test-checkbox>
+@if (fields$ | async; as fields) {
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <ng-container *ngFor="let field of fields">
+            <ng-container [ngSwitch]="field.type">
+                <app-test-input *ngSwitchCase="'input'" [field]="field" [control]="getControl(field.label)"></app-test-input>
+                <app-test-select *ngSwitchCase="'select'" [field]="field" [control]="getControl(field.label)"></app-test-select>
+                <app-test-number *ngSwitchCase="'number'" [field]="field" [control]="getControl(field.type)"></app-test-number>
+                <app-test-checkbox *ngSwitchCase="'checkbox'" [field]="field" [control]="getControl(field.type)"></app-test-checkbox>
+            </ng-container>
         </ng-container>
-    </ng-container>
-    
-    <button type="submit">Submit</button>
- </form>
+        <button type="submit">Submit</button>
+        
+     </form>
+}

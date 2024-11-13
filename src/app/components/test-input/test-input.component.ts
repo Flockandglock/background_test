@@ -12,7 +12,7 @@ export class TestInputComponent implements OnInit {
   @Input() control?: FormControl;
 
   ngOnInit(): void {
-    console.log(this.control)
+    
   }
 }
 

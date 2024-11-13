@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormServiceService } from '../../service/form-service.service';
 import { IFieldForm } from '../../../types';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-final-form',
@@ -9,39 +10,38 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrl: './final-form.component.scss'
 })
 export class FinalFormComponent implements OnInit {
-
-  public form!: FormGroup;
-  public formField?: Array<IFieldForm>;
+  form!: FormGroup;
+  fields$?: Observable<Array<IFieldForm>>;
 
   constructor(
-    private serviceForm: FormServiceService,
-    private fb: FormBuilder 
+    private fb: FormBuilder,
+    private serviceForm: FormServiceService
   ) {}
 
-  ngOnInit(): void {
-    
+  ngOnInit() {
     this.form = this.fb.group({});
-    this.serviceForm.getFileds().subscribe(form => {
-      this.formField = form;
-      console.log(form)
-    });
-    this.formField?.forEach(field => {
-      this.form.addControl(field.id, new FormControl(''));
-      
-    });
+    this.fields$ = this.serviceForm.getFileds().pipe(
+      tap((res) => {
+        res.forEach((item: IFieldForm) => {
+          this.form.addControl(item.label, new FormControl(''));
+        });
+      })
+    );
+    console.log('ngOnInit', this.form)
   }
 
-  getControl(id: string): FormControl {
-    const control = this.form.get(id);
+  getControl(label: string): FormControl {
+    const control = this.form.get(label);
     if (control instanceof FormControl) {
-        return control; // Return the control if it's a FormControl
+        console.log('control instanceof FormControl')
+      return control; 
     }
-    return new FormControl(''); // Return a new FormControl if not found
+    console.log('control instanceof не прошел')
+    return new FormControl(''); 
   }
 
-  public onSubmit() {
-    console.log( this.form)
+  onSubmit() {
+    console.log(this.form.value);
     // Handle form submission to server here
   }
-
 }
