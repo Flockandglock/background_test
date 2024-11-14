@@ -33,10 +33,10 @@ export class FinalFormComponent implements OnInit {
   getControl(label: string): FormControl {
     const control = this.form.get(label);
     if (control instanceof FormControl) {
-        console.log('control instanceof FormControl')
+        
       return control; 
     }
-    console.log('control instanceof не прошел')
+    
     return new FormControl(''); 
   }
 

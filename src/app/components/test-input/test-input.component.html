@@ -1,7 +1,6 @@
-<div *ngIf="control; else loading">
-    <label>{{ field.label }} <span *ngIf="field.required">*</span></label>
+<div *ngIf="control; else loading" class="wrapper">
+    <label>{{ field.label }}<span *ngIf="field.required">*</span></label>
     <input type="text" [formControl]="control" />
-    <small *ngIf="field.description">{{ field.description }}</small>
 </div>
 
 <ng-template #loading>

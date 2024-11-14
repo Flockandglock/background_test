@@ -1,7 +1,10 @@
-<div *ngIf="control; else loading">
-    <div *ngFor="let checkboxName of field.optionType">
-        <label for="">{{checkboxName}}</label>
-        <input type="checkbox" [formControl]="control" />
+<div *ngIf="control; else loading" class="wrapper">
+    <label class="label" for="">{{field.label}}</label>
+    <div class="wrapper-cb">
+        <div *ngFor="let checkboxName of field.optionType" class="checkbox">
+            <input type="checkbox" [formControl]="control" />
+            <label for="">{{checkboxName}}</label>
+        </div>
     </div>
     
     

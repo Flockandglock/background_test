@@ -7,6 +7,18 @@ import { FormControl } from '@angular/forms';
   styleUrl: './test-select.component.scss'
 })
 export class TestSelectComponent {
+
+  public selectIsOpen:boolean = false;
+
   @Input() field: any;
   @Input() control?: FormControl;
+
+  public toggleSelect () {
+    this.selectIsOpen = !this.selectIsOpen;
+  }
+
+  public chooseItem (str: string) {
+    this.control = new FormControl(str);
+    this.selectIsOpen = false;
+  }
 }
