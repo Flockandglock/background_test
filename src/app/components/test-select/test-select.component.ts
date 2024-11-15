@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-test-select',
@@ -18,7 +18,11 @@ export class TestSelectComponent {
   }
 
   public chooseItem (str: string) {
-    this.control = new FormControl(str);
+    if (this.field.required) {
+      this.control = new FormControl(str, [ Validators.required]);
+    } else {
+      this.control = new FormControl(str);
+    }
     this.selectIsOpen = false;
   }
 }

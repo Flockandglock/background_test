@@ -4,7 +4,11 @@
     display: flex;
 
     .wrapper-cb {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
         padding-top: 16px;
+        max-height: 237px;
     }
 
     .label {
@@ -17,18 +21,34 @@
 
     .checkbox {
         display: flex;
+        width: 205px;
         margin-bottom: 15px;
+        margin-right: 10px;
+    }
+
+    // кастомный чекбокс
+    .custom-check {
+        position: relative;
+        width: 22px;
+        height: 22px;
+        border: 1px solid #C3C3C3;
+		border-radius: 3px;
+        margin-right: 8px;
+        
+        svg {
+            margin-left: 3px;
+            margin-bottom: 1px;
+        }
+        
+    }
+
+    .active {
+        background-color: #FFE783;
     }
 
     label {
       font-size: 17px;
       margin-bottom: 2px;
-    }
-
-    input {
-        width: 22px;
-        height: 22px;
-        margin-right: 10px;
     }
 
 }

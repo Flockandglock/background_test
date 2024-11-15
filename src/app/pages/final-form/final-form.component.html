@@ -8,7 +8,7 @@
                 <app-test-checkbox *ngSwitchCase="'checkbox'" [field]="field" [control]="getControl(field.label)"></app-test-checkbox>
             </ng-container>
         </ng-container>
-        <button type="submit">Submit</button>
+        <button class="btn-submit" type="submit" [disabled]="form.invalid"><span>Отправить</span></button>
         
      </form>
 }

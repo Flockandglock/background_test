@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'final-form',
     component: FinalFormComponent
+  },
+  {
+    path: '',
+    component: FinalFormComponent
   }
 ];
 

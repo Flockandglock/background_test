@@ -10,7 +10,7 @@
     {
       "id": "673a",
       "type": "input",
-      "required": false,
+      "required": true,
       "label": "asdasd",
       "typeComponent": "common input"
     },
@@ -31,6 +31,9 @@
       "required": true,
       "label": "sssssssssssssccxc",
       "optionType": [
+        "qwe",
+        "asd",
+        "zxc",
         "qwe",
         "asd",
         "zxc"

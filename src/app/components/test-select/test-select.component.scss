@@ -42,7 +42,7 @@
 		width: 300px;
 		height: 44px;
 		border: 1px solid #c3c3c3;
-    border-radius: 3px;
+    	border-radius: 3px;
 		cursor: pointer;
 	}
 
@@ -55,6 +55,7 @@
     	border-radius: 3px;
 		background-color: #FFFFFF;
 		box-shadow: 4px 5px 4px 1px rgba(34, 60, 80, 0.2);
+		z-index: 1;
 		li {
 			padding-left: 15px;
 			cursor: pointer;

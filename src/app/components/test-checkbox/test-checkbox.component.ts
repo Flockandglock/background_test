@@ -9,4 +9,8 @@ import { FormControl } from '@angular/forms';
 export class TestCheckboxComponent {
   @Input() field: any;
   @Input() control?: FormControl;
+
+  public chooseCheckboxName (str: string) {
+    
+  }
 }

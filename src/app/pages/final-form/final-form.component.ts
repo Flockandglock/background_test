@@ -10,8 +10,9 @@ import { Observable, tap } from 'rxjs';
   styleUrl: './final-form.component.scss'
 })
 export class FinalFormComponent implements OnInit {
-  form!: FormGroup;
-  fields$?: Observable<Array<IFieldForm>>;
+  public submitted: boolean = false;
+  public form!: FormGroup;
+  public fields$?: Observable<Array<IFieldForm>>;
 
   constructor(
     private fb: FormBuilder,
