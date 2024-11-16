@@ -1,8 +1,5 @@
 <div *ngIf="control; else loading" class="wrapper">
     <label>{{ field.label }}<span class="required" *ngIf="field.required">*</span></label>
-    <!-- <select [formControl]="control">
-        <option *ngFor="let choice of field.optionType" [value]="choice">{{ choice }}</option>
-    </select> -->
     <div class="select-wrapper">
         <div class="select" (click)="toggleSelect()">
             <span>{{control.value ? control.value : 'Выберите из списка'}}</span>

@@ -8,6 +8,12 @@ export interface ITypesInputComponents {
   name: string
 }
 
+export interface IOptionTypeForCheckbox {
+  id: string,
+  value: string,
+  checked: boolean
+}
+
 
 export interface IFieldForm {
   type: string,
@@ -15,5 +21,6 @@ export interface IFieldForm {
   varietyComponent?: string
   id: string,
   required: boolean,
-  optionType?: Array<string>
+  optionType?: Array<string>,
+  optionTypeCheckBox?: Array<IOptionTypeForCheckbox>
 }

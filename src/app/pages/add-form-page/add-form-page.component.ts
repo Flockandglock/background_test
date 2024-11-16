@@ -69,7 +69,7 @@ export class AddFormPageComponent {
           : '',
         id: String(new Date().getTime()),
       };
-    } else if (typeField === 'select' || typeField === 'checkbox') {
+    } else if (typeField === 'select' ) {
       const stringToArr = (string: string) => {
         return string.split(', ').map((str) => str.trim());
       };
@@ -81,6 +81,28 @@ export class AddFormPageComponent {
           : false,
         label: this.fieldForm.value.label ? this.fieldForm.value.label : '',
         optionType: this.fieldForm.value.optionType
+          ? stringToArr(this.fieldForm.value.optionType)
+          : [],
+        id: String(new Date().getTime()),
+      };
+    } else if (typeField === 'checkbox') {
+      const stringToArr = (string: string) => {
+        return string.split(', ').map((str, index) => {
+          return {
+            id: String(new Date().getTime()) + index,
+            value: str.trim(),
+            checked: false
+          }
+        });
+      };
+
+      return {
+        type: this.fieldForm.value.type ? this.fieldForm.value.type : '',
+        required: this.fieldForm.value.required
+          ? this.fieldForm.value.required
+          : false,
+        label: this.fieldForm.value.label ? this.fieldForm.value.label : '',
+        optionTypeCheckBox: this.fieldForm.value.optionType
           ? stringToArr(this.fieldForm.value.optionType)
           : [],
         id: String(new Date().getTime()),
