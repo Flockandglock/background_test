@@ -1,3 +1,12 @@
+# Установка и запуск
+1) Скачиваем проект
+2) Устанавливаем зависимости - npm i
+3) Запускаем json-server - npx json-server form.json 
+4) Запускаем проект ng serve
+
+Готовая форма уже лежит в form.json
+Ее можно дополнять новыми полями и смотреть результат на страницу Готовая форма
+
 # FormGenerator
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.0.
