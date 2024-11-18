@@ -1,0 +1,8 @@
+<div *ngIf="control; else loading" class="wrapper">
+    <label>{{ field.label }} <span *ngIf="field.required">*</span></label>
+    <input type="number" [formControl]="control" />
+</div>
+
+<ng-template #loading>
+    <p class="text-center">Loading...</p>
+</ng-template>

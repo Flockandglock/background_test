@@ -1,0 +1,21 @@
+<div *ngIf="control; else loading" class="wrapper">
+    <label>{{ field.label }}<span class="required" *ngIf="field.required">*</span></label>
+    <div class="select-wrapper">
+        <div class="select" (click)="toggleSelect()">
+            <span>{{control.value ? control.value : 'Выберите из списка'}}</span>
+            <svg width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.1421 1.07107L8.07104 8.14214L0.999977 1.07107" stroke="black"/>
+            </svg>
+            
+        </div>
+        @if (selectIsOpen) {
+            <ul>
+                <li [ngClass]="{'active': option === control.value}" *ngFor="let option of field.optionType" [value]="option" (click)="chooseItem(option)">{{ option }}</li>
+            </ul>
+        }
+    </div>
+</div>
+
+<ng-template #loading>
+    <p class="text-center">Loading...</p>
+</ng-template>

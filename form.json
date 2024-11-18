@@ -1,0 +1,74 @@
+{
+  "field": [
+    {
+      "type": "input",
+      "label": "Name",
+      "description": "Enter your full name",
+      "required": true,
+      "id": "56fc"
+    },
+    {
+      "id": "673a",
+      "type": "input",
+      "required": true,
+      "label": "asdasd",
+      "typeComponent": "common input"
+    },
+    {
+      "id": "1731522186641",
+      "type": "select",
+      "required": true,
+      "label": "ssssssssss",
+      "optionType": [
+        "фыв",
+        "ячс",
+        "йцу"
+      ]
+    },
+    {
+      "id": "1731523449208",
+      "type": "number",
+      "required": true,
+      "label": "vvvv",
+      "varietyComponent": ""
+    },
+    {
+      "id": "1731753048894",
+      "type": "checkbox",
+      "required": false,
+      "label": "xqwqweqwe",
+      "optionTypeCheckBox": [
+        {
+          "id": "17317530488940",
+          "value": "asd",
+          "checked": false
+        },
+        {
+          "id": "17317530488941",
+          "value": "swsx",
+          "checked": false
+        },
+        {
+          "id": "17317530488942",
+          "value": "xxxx",
+          "checked": false
+        },
+        {
+          "id": "1731753048894345",
+          "value": "ccccc",
+          "checked": false
+        },
+        {
+          "id": "173175304889490",
+          "value": "uuuuu",
+          "checked": false
+        },
+        {
+          "id": "17317530488942890",
+          "value": "ppppp",
+          "checked": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+<div *ngIf="control; else loading" class="wrapper">
+    <label class="label" for="">{{field.label}}</label>
+    <div class="wrapper-cb">
+        
+            <div *ngFor="let checkboxName of field.optionTypeCheckBox" class="checkbox">
+                <div  [ngClass]="{' active': checkboxName.checked, 'custom-check': true}"  (click)="chooseCheckboxName(checkboxName)">
+                    <svg [ngClass]="{'svg-active': checkboxName.checked}"  width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 4L6 11L12 1" stroke="black" stroke-width="2"/>
+                    </svg>
+                </div>
+                <label>{{checkboxName.value}}</label>
+            </div>
+        
+    </div>
+</div>
+
+<ng-template #loading>
+    <p class="text-center">Loading...</p>
+</ng-template>

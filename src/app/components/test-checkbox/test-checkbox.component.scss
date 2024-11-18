@@ -1,0 +1,58 @@
+
+
+.wrapper {
+    display: flex;
+
+    .wrapper-cb {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding-top: 16px;
+        max-height: 237px;
+    }
+
+    .label {
+        width: 140px;
+        padding: 10px;
+        font-size: 17px;
+        margin-right: 15px;
+        word-break: break-all
+    }
+
+    .checkbox {
+        display: flex;
+        width: 205px;
+        margin-bottom: 15px;
+        margin-right: 10px;
+    }
+
+    // кастомный чекбокс
+    .custom-check {
+        position: relative;
+        padding: 3px;
+        width: 22px;
+        height: 22px;
+        border: 1px solid #C3C3C3;
+		border-radius: 3px;
+        margin-right: 8px;
+        
+        svg {
+            display: none;
+        }
+
+        .svg-active {
+            display: block;
+        }
+        
+    }
+
+    .active {
+        background-color: #FFE783;
+    }
+
+    label {
+      font-size: 17px;
+      margin-bottom: 2px;
+    }
+
+}

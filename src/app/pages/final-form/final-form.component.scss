@@ -1,0 +1,16 @@
+.btn-submit {
+    margin-top: 30px;
+    margin-left: 153px;
+    width: 139px;
+    height: 52px;
+    background-color: #FFE783;
+    border: 1px solid #c3c3c3;
+    border-radius: 3px;
+    cursor: pointer;
+    
+    &:hover {
+        span {
+            opacity: 70%;
+        }
+    }
+}
