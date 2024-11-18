@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormServiceService } from '../../service/form-service.service';
-import { IFieldForm } from '../../../types';
+import { IFieldForm, IOptionTypeForCheckbox } from '../../../types';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Observable, tap } from 'rxjs';
+import { map, Observable, of, tap } from 'rxjs';
 
 @Component({
   selector: 'app-final-form',
@@ -30,6 +30,23 @@ export class FinalFormComponent implements OnInit {
     );
     console.log('ngOnInit', this.form)
   }
+
+  public handleEventField(field: IFieldForm) {
+    if (!this.fields$) return;
+
+    this.fields$ = this.fields$.pipe(
+        map((items: IFieldForm[]) => {
+            return items.map((item: IFieldForm) => {
+                if (item.id === field.id) {
+                    return {
+                        ...field
+                    };
+                }
+                return item;
+            });
+        })
+    );
+}
 
   getControl(label: string): FormControl {
     const control = this.form.get(label);

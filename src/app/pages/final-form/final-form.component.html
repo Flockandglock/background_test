@@ -5,7 +5,7 @@
                 <app-test-input *ngSwitchCase="'input'" [field]="field" [control]="getControl(field.label)"></app-test-input>
                 <app-test-select *ngSwitchCase="'select'" [field]="field" [control]="getControl(field.label)"></app-test-select>
                 <app-test-number *ngSwitchCase="'number'" [field]="field" [control]="getControl(field.label)"></app-test-number>
-                <app-test-checkbox *ngSwitchCase="'checkbox'" [field]="field" [control]="getControl(field.label)"></app-test-checkbox>
+                <app-test-checkbox (eventChangeField)="handleEventField($event)" *ngSwitchCase="'checkbox'" [field]="field" [control]="getControl(field.label)"></app-test-checkbox>
             </ng-container>
         </ng-container>
         <button class="btn-submit" type="submit" [disabled]="form.invalid"><span>Отправить</span></button>
